@@ -37,14 +37,6 @@ class NewMessageActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.new_message_activity)
         val button_back = findViewById<Button>(R.id.button_back)
-//        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview_newmessage)
-//        val adapter = GroupAdapter<GroupieViewHolder>()
-//
-//        adapter.add(UserItem())
-//        adapter.add(UserItem())
-//        adapter.add(UserItem())
-//
-//        recyclerView.adapter = adapter
 
         fetchUsers()
 
