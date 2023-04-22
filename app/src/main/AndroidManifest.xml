@@ -13,12 +13,18 @@
         android:theme="@style/Theme.Messenger"
         tools:targetApi="31">
         <activity
+            android:name=".ChatLogActivity"
+            android:exported="false"
+            android:label="@string/title_activity_chat_log"
+            android:theme="@style/Theme.Messenger" />
+        <activity
             android:name=".NewMessageActivity"
             android:exported="false"
             android:label="@string/title_activity_new_message"
             android:theme="@style/Theme.Messenger">
-                <meta-data android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".LatestMessagesActivity"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LatestMessagesActivity" />
         </activity>
         <activity
             android:name=".LatestMessagesActivity"

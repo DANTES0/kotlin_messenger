@@ -43,10 +43,11 @@ class NewMessageActivity : ComponentActivity() {
         button_back.setOnClickListener {
             val intent = Intent(this, LatestMessagesActivity::class.java)
             finish()
-//            startActivity(intent)
-//            finish()
         }
 
+    }
+    companion object{
+        val USER_KEY = "USER_KEY"
     }
     private  fun fetchUsers() {
         val ref = FirebaseDatabase.getInstance().getReference("/users")
@@ -60,6 +61,15 @@ class NewMessageActivity : ComponentActivity() {
                     if (user != null) {
                         adapter.add(UserItem(user))
                     }
+                }
+
+                adapter.setOnItemClickListener { item, view ->
+
+                    val userItem = item as UserItem
+
+                    val intent = Intent(view.context, ChatLogActivity::class.java)
+                    intent.putExtra(USER_KEY, userItem.user.username)
+                    startActivity(intent)
                 }
                 recyclerView.adapter = adapter
             }
