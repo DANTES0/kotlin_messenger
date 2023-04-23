@@ -70,6 +70,7 @@ class ChatLogActivity : ComponentActivity() {
                     } else {
                         adapter.add(ChatToItem(chatMessage.text, toUser!!))
                     }
+                    findViewById<RecyclerView>(R.id.recyclerview_chat_log).scrollToPosition(adapter.itemCount-1)
 
 
 
@@ -113,6 +114,11 @@ class ChatLogActivity : ComponentActivity() {
                 findViewById<RecyclerView>(R.id.recyclerview_chat_log).scrollToPosition(adapter.itemCount-1)
             }
         toReference.setValue(chatMessage)
+
+        val latestMessageFromRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
+        latestMessageFromRef.setValue(chatMessage)
+        val latestMessageToRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$toId/$fromId")
+        latestMessageToRef.setValue(chatMessage)
     }
 
 //    private fun setupDummyData(){
